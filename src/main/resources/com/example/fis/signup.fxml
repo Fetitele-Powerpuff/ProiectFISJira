@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="450.0" style="-fx-background-radius: 18 18 18 18;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fis.SignupController">
+   <children>
+      <AnchorPane fx:id="topPane" prefHeight="93.0" prefWidth="450.0" style="-fx-background-color: black; -fx-background-radius: 18 18 0 0;">
+         <children>
+            <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/cinemacity.jpg" />
+               </image>
+            </ImageView>
+            <Text fill="ORANGE" layoutX="173.0" layoutY="57.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Signup">
+               <font>
+                  <Font name="Verdana Bold" size="27.0" />
+               </font>
+            </Text>
+            <JFXButton fx:id="close" buttonType="RAISED" layoutX="411.0" layoutY="11.0" onMouseClicked="#closeWindow" text="X" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="bottomPane" layoutY="89.0" prefHeight="583.0" prefWidth="450.0" style="-fx-background-color: linear-gradient(to bottom, black, orange); -fx-background-radius: 0 0 18 18;">
+         <children>
+            <TextField fx:id="firstName" layoutX="45.0" layoutY="92.0" prefHeight="26.0" prefWidth="370.0" promptText="First Name" />
+            <TextField fx:id="lastName" layoutX="45.0" layoutY="148.0" prefHeight="26.0" prefWidth="370.0" promptText="Last Name" />
+            <TextField fx:id="username" layoutX="45.0" layoutY="203.0" prefHeight="26.0" prefWidth="370.0" promptText="Username" />
+            <TextField fx:id="password" layoutX="45.0" layoutY="265.0" prefHeight="26.0" prefWidth="370.0" promptText="Password" />
+            <TextField fx:id="cardNumber" layoutX="45.0" layoutY="321.0" prefHeight="26.0" prefWidth="370.0" promptText="Card Number" />
+            <TextField fx:id="phoneNumber" layoutX="45.0" layoutY="379.0" prefHeight="26.0" prefWidth="370.0" promptText="Phone Number" />
+            <JFXButton fx:id="signup" buttonType="RAISED" layoutX="153.0" layoutY="502.0" onAction="#signupMethod" prefHeight="26.0" prefWidth="144.0" style="-fx-background-color: black;" text="Signup" textFill="ORANGE" />
+            <TextField fx:id="email" layoutX="45.0" layoutY="432.0" prefHeight="26.0" prefWidth="370.0" promptText="E-mail" />
+            <Text fx:id="warningText" fill="ORANGE" layoutX="158.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The input is not correct" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
