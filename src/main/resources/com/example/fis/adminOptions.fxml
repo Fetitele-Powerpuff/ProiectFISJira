@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="710.0" prefWidth="939.0" style="-fx-background-radius: 18 18 18 18;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fis.AdminOptionsController">
+   <children>
+      <BorderPane layoutX="-15.0" prefHeight="710.0" prefWidth="1006.0" style="-fx-background-radius: 18 18 18 18;">
+         <top>
+            <AnchorPane prefHeight="58.0" prefWidth="954.0" style="-fx-background-color: orange; -fx-background-radius: 18 18 0 18;" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="closeButton" layoutX="968.0" layoutY="16.0" onAction="#closeWindow" text="X" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="652.0" prefWidth="190.0" style="-fx-background-color: linear-gradient(to top, black, orange); -fx-background-radius: 0 0 0 18;" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="addButton" buttonType="RAISED" layoutX="36.0" layoutY="223.0" onAction="#showAdd" prefHeight="38.0" prefWidth="139.0" text="Add Movies" textFill="WHITE" />
+                  <JFXButton fx:id="deleteReservationButton" buttonType="RAISED" layoutX="36.0" layoutY="281.0" onAction="#deleteReservation" prefHeight="37.0" prefWidth="140.0" text="Delete Reservation" textFill="WHITE" />
+                  <Text fill="WHITE" layoutX="62.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin">
+                     <font>
+                        <Font name="Verdana Bold" size="23.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="deleteMovieButton" layoutX="60.0" layoutY="344.0" onAction="#showDelete" text="Delete Movie" textFill="WHITE" />
+                  <JFXButton fx:id="showReservationsButton" layoutX="54.0" layoutY="402.0" onAction="#showReservation" text="Add Reservation" textFill="WHITE" />
+                  <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="65.0" layoutY="456.0" onAction="#goToLoginPage" text="Login Page" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="652.0" prefWidth="747.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="17.0" layoutY="14.0" prefHeight="633.0" prefWidth="735.0">
+                     <children>
+                        <TableView fx:id="tabel" layoutX="21.0" layoutY="20.0" prefHeight="611.0" prefWidth="742.0">
+                           <columns>
+                              <TableColumn fx:id="title" prefWidth="300.0" text="Movie Title" />
+                              <TableColumn fx:id="dateT" prefWidth="100.0" text="Date" />
+                              <TableColumn fx:id="startT" prefWidth="100.0" text="Start" />
+                              <TableColumn fx:id="finish" maxWidth="1.7976931348623157E308" prefWidth="116.7999267578125" text="Finish" />
+                              <TableColumn fx:id="roomT" prefWidth="125.60009765625" text="Cinema room" />
+                           </columns>
+                        </TableView>
+                        <AnchorPane fx:id="anchorVisible1" prefHeight="643.0" prefWidth="786.0" style="-fx-background-color: black;" visible="false">
+                           <children>
+                              <AnchorPane layoutX="262.0" layoutY="127.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom right, orange, black); -fx-background-radius: 10 10 10 10;">
+                                 <children>
+                                    <ImageView fx:id="imageDelete" fitHeight="179.0" fitWidth="183.0" layoutX="11.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <Text fill="WHITE" layoutX="229.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DELETE MOVIE" wrappingWidth="271.9889831542969">
+                                 <font>
+                                    <Font name="Verdana Bold" size="31.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="nameDelete" layoutX="243.0" layoutY="391.0" onKeyPressed="#showImage" prefHeight="26.0" prefWidth="246.0" promptText="Name" />
+                              <JFXButton fx:id="applyDelete" buttonType="RAISED" layoutX="325.0" layoutY="492.0" onAction="#deleteMovies" prefHeight="33.0" prefWidth="78.0" text="Apply" textFill="ORANGE" />
+                              <Text fx:id="fillFields1" fill="RED" layoutX="313.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill all the fields" visible="false" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="anchorVisible" layoutX="-1.0" prefHeight="640.0" prefWidth="778.0" style="-fx-background-color: black;">
+                           <children>
+                              <Text fill="WHITE" layoutX="252.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD MOVIE" wrappingWidth="221.58901977539062">
+                                 <font>
+                                    <Font name="Verdana Bold" size="31.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="nameAdd" layoutX="228.0" layoutY="331.0" prefHeight="26.0" prefWidth="246.0" promptText="Name" />
+                              <TextField fx:id="genreAdd" layoutX="229.0" layoutY="391.0" prefHeight="26.0" prefWidth="246.0" promptText="Genre" />
+                              <TextField fx:id="lengthAdd" layoutX="227.0" layoutY="449.0" prefHeight="26.0" prefWidth="249.0" promptText="Length" />
+                              <JFXButton fx:id="applyAdd" buttonType="RAISED" layoutX="312.0" layoutY="524.0" onAction="#addMovies" prefHeight="33.0" prefWidth="78.0" text="Apply" textFill="ORANGE" />
+                              <Text fx:id="fillFields" fill="RED" layoutX="313.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill all the fields" visible="false" />
+                              <AnchorPane layoutX="252.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom right, orange, black); -fx-background-radius: 10 10 10 10;">
+                                 <children>
+                                    <ImageView fx:id="imageViewAdd" fitHeight="220.0" fitWidth="180.0" layoutX="12.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <JFXButton fx:id="insertButton" layoutX="500.0" layoutY="189.0" text="Insert Photo" textFill="ORANGE" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="anchorVisible2" layoutX="-2.0" prefHeight="642.0" prefWidth="788.0" style="-fx-background-color: black;" visible="false">
+                           <children>
+                              <Text fill="WHITE" layoutX="278.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD RESERVATION">
+                                 <font>
+                                    <Font name="Verdana Bold" size="21.0" />
+                                 </font>
+                              </Text>
+                              <DatePicker fx:id="datePickerAddR" layoutX="84.0" layoutY="193.0" prefHeight="26.0" prefWidth="203.0" />
+                              <ChoiceBox fx:id="roomAddR" layoutX="82.0" layoutY="301.0" prefHeight="26.0" prefWidth="208.0" />
+                              <ChoiceBox fx:id="startAddR" layoutX="440.0" layoutY="193.0" prefHeight="26.0" prefWidth="210.0" />
+                              <ChoiceBox fx:id="stopAddR" layoutX="437.0" layoutY="301.0" prefHeight="26.0" prefWidth="215.0" />
+                              <ChoiceBox fx:id="nameAddR" layoutX="279.0" layoutY="422.0" prefHeight="26.0" prefWidth="208.0" />
+                              <Text fill="WHITE" layoutX="84.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick Date" />
+                              <Text fill="WHITE" layoutX="84.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick Room" />
+                              <Text fill="WHITE" layoutX="440.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick Start" />
+                              <Text fill="WHITE" layoutX="437.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick Finish" />
+                              <Text fill="WHITE" layoutX="279.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick Name" />
+                              <JFXButton fx:id="applyAddR" layoutX="345.0" layoutY="544.0" onAction="#addChanges" text="Apply" textFill="WHITE" />
+                              <Text fx:id="collisionDetected" fill="RED" layoutX="271.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There is a collision. Pick another time" visible="false" />
+                              <Text fx:id="pickAnotherHour1" fill="RED" layoutX="437.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The hour selected is not consistent with the length" visible="false" />
+                              <Text fx:id="pickAnotherHour2" fill="RED" layoutX="437.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="of the film. Pick another hour" visible="false" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

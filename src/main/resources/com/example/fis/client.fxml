@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="713.0" prefWidth="1010.0" style="-fx-background-radius: 18 18 18 18; -fx-background-radius: 18 18 18 18;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fis.ClientController">
+   <children>
+      <BorderPane fx:id="borderPane" layoutX="-15.0" prefHeight="731.0" prefWidth="1020.0" style="-fx-background-radius: 18 18 18 18;">
+         <top>
+            <AnchorPane fx:id="upPane" prefHeight="58.0" prefWidth="984.0" style="-fx-background-color: orange; -fx-background-radius: 18 18 0 18;" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="closeButton" layoutX="994.0" layoutY="16.0" onAction="#closeWindow" text="X" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane fx:id="leftPane" prefHeight="652.0" prefWidth="190.0" style="-fx-background-color: linear-gradient(to top, black, orange); -fx-background-radius: 0 0 0 18;" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="profileButton" buttonType="RAISED" layoutX="29.0" layoutY="270.0" onAction="#showProfile" prefHeight="38.0" prefWidth="139.0" text="Profile" textFill="WHITE" />
+                  <JFXButton fx:id="bookMovieButton" buttonType="RAISED" layoutX="29.0" layoutY="347.0" onAction="#showSeatChoice" prefHeight="37.0" prefWidth="140.0" text="Book Movie" textFill="WHITE" />
+                  <Text fill="WHITE" layoutX="62.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client">
+                     <font>
+                        <Font name="Verdana Bold" size="23.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="showMovies" layoutX="56.0" layoutY="429.0" onAction="#showMovies" text="Show Movies" textFill="WHITE" />
+                  <JFXButton fx:id="loginButton" layoutX="57.0" layoutY="495.0" onAction="#goToLoginPage" text="Login Page" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane fx:id="centerPane" prefHeight="652.0" prefWidth="798.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="16.0" layoutY="14.0" prefHeight="662.0" prefWidth="813.0">
+                     <children>
+                        <TableView fx:id="tabel" layoutX="21.0" layoutY="20.0" prefHeight="611.0" prefWidth="775.0">
+                           <columns>
+                              <TableColumn fx:id="title" prefWidth="220.80001068115234" text="Movie Title" />
+                              <TableColumn fx:id="dateT" prefWidth="115.20001220703125" text="Date" />
+                              <TableColumn fx:id="startT" prefWidth="117.5999755859375" text="Start" />
+                              <TableColumn fx:id="finish" maxWidth="1.7976931348623157E308" prefWidth="132.80001831054688" text="Finish" />
+                              <TableColumn fx:id="roomT" prefWidth="187.20001220703125" text="Cinema room" />
+                           </columns>
+                        </TableView>
+                        <AnchorPane fx:id="anchorVisible1" prefHeight="662.0" prefWidth="818.0" style="-fx-background-color: black;" visible="false">
+                           <children>
+                              <TableView fx:id="tableUserInfo" layoutX="28.0" layoutY="22.0" prefHeight="67.0" prefWidth="766.0">
+                                 <columns>
+                                    <TableColumn fx:id="fName" prefWidth="93.60002899169922" text="First Name" />
+                                    <TableColumn fx:id="lName" prefWidth="95.19998168945312" text="Last Name" />
+                                    <TableColumn fx:id="email" prefWidth="125.60003662109375" text="E-mail" />
+                                    <TableColumn fx:id="username" prefWidth="90.4000244140625" text="Username" />
+                                    <TableColumn fx:id="cardNumber" prefWidth="191.19998168945312" text="Card Number" />
+                                    <TableColumn fx:id="phoneNumber" prefWidth="170.39996337890625" text="Phone Number" />
+                                 </columns>
+                              </TableView>
+                              <TableView fx:id="tableMovies" layoutX="28.0" layoutY="132.0" prefHeight="474.0" prefWidth="766.0">
+                                 <columns>
+                                    <TableColumn fx:id="name" prefWidth="765.6000045776367" text="Name" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <AnchorPane fx:id="seatPane" prefHeight="731.0" prefWidth="958.0" visible="false">
+         <children>
+            <AnchorPane layoutX="219.0" layoutY="82.0" prefHeight="518.0" prefWidth="598.0" style="-fx-background-color: linear-gradient(to right, orange, black); -fx-background-radius: 0 18 18 0;">
+               <children>
+                  <Text fill="WHITE" layoutX="186.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT SEAT">
+                     <font>
+                        <Font name="Verdana Bold" size="25.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="b12" buttonType="RAISED" layoutX="390.0" layoutY="311.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="12" />
+                  <JFXButton fx:id="b11" buttonType="RAISED" layoutX="284.0" layoutY="311.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="11" />
+                  <JFXButton fx:id="b10" buttonType="RAISED" layoutX="178.0" layoutY="311.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="10" />
+                  <JFXButton fx:id="b9" buttonType="RAISED" layoutX="76.0" layoutY="311.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="9" />
+                  <JFXButton fx:id="b1" buttonType="RAISED" layoutX="76.0" layoutY="155.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="1" />
+                  <JFXButton fx:id="b8" buttonType="RAISED" layoutX="390.0" layoutY="234.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="8" />
+                  <JFXButton fx:id="b7" buttonType="RAISED" layoutX="284.0" layoutY="234.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="7" />
+                  <JFXButton fx:id="b6" buttonType="RAISED" layoutX="178.0" layoutY="234.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="6" />
+                  <JFXButton fx:id="b5" buttonType="RAISED" layoutX="76.0" layoutY="234.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="5" />
+                  <JFXButton fx:id="b4" buttonType="RAISED" layoutX="390.0" layoutY="155.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="4" />
+                  <JFXButton fx:id="b3" buttonType="RAISED" layoutX="284.0" layoutY="155.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="3" />
+                  <JFXButton fx:id="b2" buttonType="RAISED" layoutX="178.0" layoutY="155.0" minHeight="50.0" minWidth="50.0" onAction="#handleSeatButtonClick" style="-fx-background-color: white;" text="2" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="22.0" layoutY="68.0" prefHeight="546.0" prefWidth="204.0" style="-fx-background-color: linear-gradient(to right, black, orange); -fx-background-radius: 18 18 18 18;">
+               <children>
+                  <JFXButton fx:id="closeButtonSeats" layoutX="24.0" layoutY="20.0" onAction="#closeWindowSeats" text="X" textFill="WHITE" />
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

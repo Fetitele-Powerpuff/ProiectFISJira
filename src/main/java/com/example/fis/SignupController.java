@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ResourceBundle;
@@ -66,6 +69,27 @@ public class SignupController implements Initializable {
         stage.close();
     }
 
+    private static MessageDigest getMessageDigest() {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA-512");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-512 does not exist!");
+        }
+        return md;
+    }
+
+    private static String encodePassword(String salt, String password) {
+        MessageDigest md = getMessageDigest();
+        md.update(salt.getBytes(StandardCharsets.UTF_8));
+
+        byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+
+        // This is the way a password should be encoded when checking the credentials
+        return new String(hashedPassword, StandardCharsets.UTF_8)
+                .replace("\"", ""); //to be able to save in JSON format
+    }
+
     @FXML
     void signupMethod(ActionEvent event) {
         DatabaseConnection connection=new DatabaseConnection();
@@ -85,7 +109,7 @@ public class SignupController implements Initializable {
             if (phone.matches("[0-9]+") && card.matches("[0-9]+")) {
                 warningText.setVisible(false);
                 String insertFields = "insert into UserInfo(first_name, last_name, e_mail, username, card_number, phone_number, password) VALUES(";
-                String insertValues = "'" + frstName + "','" + lstName + "','" + mail + "','" + usrName + "','" + card + "','" + phone + "','" + psw + "')";
+                String insertValues = "'" + frstName + "','" + lstName + "','" + mail + "','" + usrName + "','" + card + "','" + phone + "','" + encodePassword(username.getText(),psw) + "')";
 
                 String insertToRegister = insertFields + insertValues;
 
@@ -95,7 +119,8 @@ public class SignupController implements Initializable {
                     Stage stageLogin=new Stage();
                     HelloApplication hp=new HelloApplication();
                     hp.start(stageLogin);
-                    stage.close();
+                    if(stage!=null)
+                        stage.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
