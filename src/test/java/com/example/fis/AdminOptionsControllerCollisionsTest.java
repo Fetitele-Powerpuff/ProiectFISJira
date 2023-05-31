@@ -32,7 +32,7 @@ class AdminOptionsControllerCollisionsTest extends ApplicationTest {
     public void testCheckCollision_NoCollision_ReturnsTrue() {
         // Arrange
         String room = "3D";
-        DatePicker dp = new DatePicker(LocalDate.parse("2023-06-02"));
+        DatePicker dp = new DatePicker(LocalDate.parse("2023-05-31"));
         int start = 16;
         int stop = 19;
         String name = "The Hunger Games";
@@ -46,10 +46,10 @@ class AdminOptionsControllerCollisionsTest extends ApplicationTest {
     @Test
     public void testCheckCollision_CollisionDetected_ReturnsFalse_SameInterval() {
         // Arrange
-        String room = "3D";
-        DatePicker dp = new DatePicker(LocalDate.parse("2023-06-02"));
-        int start = 10;
-        int stop = 13;
+        String room = "2D";
+        DatePicker dp = new DatePicker(LocalDate.parse("2023-05-31"));
+        int start = 14;
+        int stop = 17;
         String name = "The Hunger Games";
 
         // Act
@@ -62,10 +62,10 @@ class AdminOptionsControllerCollisionsTest extends ApplicationTest {
     @Test
     public void testCheckCollision_CollisionDetected_ReturnsFalse_LeftCollision() {
         // Arrange
-        String room = "3D";
-        DatePicker dp = new DatePicker(LocalDate.parse("2023-06-02"));
-        int start = 9;
-        int stop = 12;
+        String room = "2D";
+        DatePicker dp = new DatePicker(LocalDate.parse("2023-05-31"));
+        int start = 12;
+        int stop = 15;
         String name = "The Hunger Games";
 
         // Act
@@ -78,10 +78,10 @@ class AdminOptionsControllerCollisionsTest extends ApplicationTest {
     @Test
     public void testCheckCollision_CollisionDetected_ReturnsFalse_RightCollision() {
         // Arrange
-        String room = "3D";
-        DatePicker dp = new DatePicker(LocalDate.parse("2023-06-02"));
-        int start = 12;
-        int stop = 15;
+        String room = "2D";
+        DatePicker dp = new DatePicker(LocalDate.parse("2023-05-31"));
+        int start = 16;
+        int stop = 19;
         String name = "The Hunger Games";
 
         // Act
