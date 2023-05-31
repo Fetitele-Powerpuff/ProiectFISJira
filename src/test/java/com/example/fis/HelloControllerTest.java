@@ -71,6 +71,18 @@ class HelloControllerTest extends ApplicationTest {
         Assertions.assertEquals(expectedHashedPassword, encodedPassword);
     }
 
+    @Test
+    public void testEncodePasswordAdmin() {
+        String salt = "cristi.andron";
+        String password = "test";
+
+        // Expected hashed password generated externally
+        String expectedHashedPassword = "\u0013pc\u0003A��'�.SV��{B{Y�K.y�\u00129��z,d�Z�36D�\u0001��\u000B�֓��g�M奺�6��\tƫ��)?";
+
+        String encodedPassword = HelloController.encodePassword(salt, password);
+        Assertions.assertEquals(expectedHashedPassword, encodedPassword);
+    }
+
 
 
 
