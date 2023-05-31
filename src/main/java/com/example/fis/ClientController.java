@@ -149,13 +149,8 @@ public class ClientController implements Initializable {
 
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:identifier.sqlite");
-
-            // create a new JDBC statement
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select start,stop,type_room,date,name,id_reservation from Reservations join Film F on Reservations.id_film = F.id_film");
-
-
-            // Loop through the result set and add each row to the observable list
             while (rs.next()) {
                 String name = rs.getString("name");
                 int stop = rs.getInt("stop");
@@ -171,8 +166,6 @@ public class ClientController implements Initializable {
                 index++;
             }
 
-
-            // Define the columns for the TableView
 
             title.setCellValueFactory(new PropertyValueFactory<>("title"));
             startT.setCellValueFactory(new PropertyValueFactory<>("startT"));
@@ -196,13 +189,10 @@ public class ClientController implements Initializable {
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:identifier.sqlite");
 
-            // create a new JDBC statement
             Statement statement = connection.createStatement();
 
             ResultSet rs = statement.executeQuery("SELECT first_name, last_name, e_mail, username, card_number, phone_number FROM UserInfo WHERE username = '" + User.getUsername() + "'");
 
-
-            // Loop through the result set and add each row to the observable list
             while (rs.next()) {
                 String fName = rs.getString("first_name");
                 String lName = rs.getString("last_name");
@@ -217,8 +207,6 @@ public class ClientController implements Initializable {
 
             }
 
-
-            // Define the columns for the TableView
 
 
             email.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
@@ -238,14 +226,12 @@ public class ClientController implements Initializable {
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:identifier.sqlite");
 
-            // create a new JDBC statement
             Statement statement = connection.createStatement();
             Statement statement2 = connection.createStatement();
 
             ResultSet rs = statement.executeQuery("SELECT Film.name from Film join Reservations R on Film.id_film = R.id_film join ReservationsUser RU on R.id_reservation = RU.id_reservation join UserInfo UI on RU.id_user = UI.account_id where UI.username='"+User.getUsername()+"'");
             ResultSet rs2 = statement2.executeQuery("SELECT DeletedFilms.name from DeletedFilms  join UserInfo UI on UI.account_id = DeletedFilms.id_user where UI.username='"+User.getUsername()+"'");
 
-            // Loop through the result set and add each row to the observable list
             while (rs.next()) {
                 String name = rs.getString("name");
                 dataFilms.add(new FilmsData(name));
@@ -259,8 +245,6 @@ public class ClientController implements Initializable {
                 System.out.println(name);
             }
 
-
-            // Define the columns for the TableView
 
 
             name.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
@@ -277,11 +261,9 @@ public class ClientController implements Initializable {
         seatPane.setVisible(true);
         pane.setBackground(Background.EMPTY);
 
-        // Retrieve the selected movie's id_reservation
         DataClass selectedFilm = tabel.getSelectionModel().getSelectedItem();
         int selectedReservationId = selectedFilm.getId_reservation();
 
-        // Disable occupied seats
         disableOccupiedSeats(selectedReservationId);
     }
 
@@ -364,13 +346,11 @@ public class ClientController implements Initializable {
             statement.setInt(1, reservationId);
             ResultSet resultSet = statement.executeQuery();
 
-            // Get the list of occupied seat numbers
             List<Integer> occupiedSeats = new ArrayList<>();
             while (resultSet.next()) {
                 occupiedSeats.add(resultSet.getInt("seat"));
             }
 
-            // Disable buttons (seats) that are occupied
             for (JFXButton button : buttons) {
 
                 JFXButton seatButton = button;

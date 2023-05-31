@@ -261,7 +261,6 @@ public class AdminOptionsController implements Initializable {
                 insertStatement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
-                // Handle any database errors
             }
         }
     }
@@ -335,7 +334,6 @@ public class AdminOptionsController implements Initializable {
             }
         });
 
-// Add event handler for stopAdd choice box
         stopAddR.setOnAction(event -> {
             Integer selectedStart = (Integer) startAddR.getValue();
             Integer selectedStop = (Integer) stopAddR.getValue();
@@ -358,10 +356,9 @@ public class AdminOptionsController implements Initializable {
         ResultSet rs = statement.executeQuery("SELECT name FROM Film");
 
         while (rs.next()) {
-            nameAddR.getItems().add(rs.getString(1)); // Use column index 1 for the name column
+            nameAddR.getItems().add(rs.getString(1));
         }
 
-        // Close the ResultSet, Statement, and Connection
         rs.close();
         statement.close();
         connection.close();
@@ -370,8 +367,6 @@ public class AdminOptionsController implements Initializable {
     int index=0;
     public void showMovies() throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:sqlite:identifier.sqlite");
-
-        // create a new JDBC statement
         Statement statement = connection.createStatement();
         ResultSet rs=statement.executeQuery("SELECT start,stop,type_room,date,name,F.image,Reservations.id_reservation,RU.id_user from Reservations join Film F on F.id_film = Reservations.id_film join ReservationsUser RU on Reservations.id_reservation = RU.id_reservation");
 
@@ -439,7 +434,6 @@ public class AdminOptionsController implements Initializable {
                         Image image = new Image(rs.getString(1), 150, 150, false, true);
                         imageDelete.setImage(image);
                     } else {
-                        // Clear the image if no result is found
                         imageDelete.setImage(null);
 
 
@@ -450,7 +444,6 @@ public class AdminOptionsController implements Initializable {
                     e.printStackTrace();
                 }
             } else {
-                // Clear the image if the text is empty
                 imageViewAdd.setImage(null);
             }
         });
@@ -458,16 +451,12 @@ public class AdminOptionsController implements Initializable {
 
     public void deleteMovies(ActionEvent event) {
         try {
-            // Establish the database connection
             Connection connection = DriverManager.getConnection("jdbc:sqlite:identifier.sqlite");
-
-            // Prepare the delete statement
             String deleteQuery = "DELETE FROM Film WHERE name = ?";
             PreparedStatement statement = connection.prepareStatement(deleteQuery);
             statement.setString(1, nameDelete.getText());
 
 
-            // Execute the delete statement
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Film deleted successfully!");
@@ -475,7 +464,6 @@ public class AdminOptionsController implements Initializable {
                 System.out.println("No film found with the given information.");
             }
 
-            // Close the resources
             statement.close();
             connection.close();
         } catch (SQLException e) {
